@@ -212,3 +212,33 @@ function extractMonthlyIndices(text) {
     return rows;
 
 }
+
+function extractBills(text){
+
+    const bills=[];
+
+    const regex=/BILL-(\d+)\s+(\d{2}\/\d{2}\/\d{4})\s+₹\s*([\d,]+\.\d+)/g;
+
+    let m;
+
+    while((m=regex.exec(text))!==null){
+
+        bills.push({
+
+            bill:m[1],
+
+            date:m[2],
+
+            amount:parseFloat(
+                m[3].replace(/,/g,"")
+            )
+
+        });
+
+    }
+
+    window.billData=bills;
+
+    console.log(bills);
+
+}
