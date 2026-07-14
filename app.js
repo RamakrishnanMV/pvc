@@ -8,7 +8,7 @@ window.addEventListener("load", function () {
     console.log("Railways PVC Analyzer Started");
 
     const analyzeBtn = document.getElementById("analyzeBtn");
-
+    
     analyzeBtn.addEventListener("click", startVerification);
 
 });
