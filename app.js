@@ -56,3 +56,38 @@ function analysisCompleted() {
     updateStep(5, "⏳ PVC Calculation (Next Module)");
 
 }
+
+async function startVerification(){
+
+    const railway =
+        document.getElementById("railwayPdf").files[0];
+
+    const cpi =
+        document.getElementById("cpiPdf").files[0];
+
+    const wpi =
+        document.getElementById("wpiPdf").files[0];
+
+    if(!railway || !cpi || !wpi){
+
+        alert("Please select all three PDFs.");
+
+        return;
+
+    }
+
+    const railwayText = await readPDF(railway);
+
+    const cpiText = await readPDF(cpi);
+
+    const wpiText = await readPDF(wpi);
+
+    extractRailway(railwayText);
+
+    extractCPI(cpiText);
+
+    extractWPI(wpiText);
+
+    compareOfficialData();
+
+}
