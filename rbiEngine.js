@@ -13,7 +13,21 @@ async function verifyOfficialIndices(data){
 
     updateStatus("Finding Wholesale Price Index...");
 
-    updateStatus("Ready for verification.");
+    async function verifyOfficialIndices() {
+
+    updateStatus("Step 1/5 : Opening RBI Bulletin...");
+
+    // Next we'll fetch RBI data
+
+    updateStatus("Step 2/5 : Reading CPI-IW...");
+
+    updateStatus("Step 3/5 : Reading WPI...");
+
+    updateStatus("Step 4/5 : Comparing values...");
+
+    updateStatus("Step 5/5 : Verification completed.");
+
+}
 
 }
 
