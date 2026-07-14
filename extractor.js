@@ -89,6 +89,7 @@ console.log(monthlyIndices);
         findOfficialIndices(data);
     }
    // extractBillSummary(text);
+   extractLabourTable(text);
 
 }
 
@@ -179,11 +180,27 @@ document.getElementById("output").innerHTML = `
 
 </table>
 
-<div class="alert alert-info">
+<h5 class="mt-4">Labour PVC Verification</h5>
 
+<table class="table table-bordered">
 
+<thead>
 
-</div>
+<tr>
+
+<th>Bill</th>
+<th>W × 20%</th>
+<th>LQ</th>
+<th>LQ-LB</th>
+<th>PDF PVC</th>
+
+</tr>
+
+</thead>
+
+<tbody id="labourTable"></tbody>
+
+</table>
 
 </div>
 
@@ -270,5 +287,15 @@ alert("Bills Found : " + bills.length);
     window.billSummary = bills;
 
     console.log("Bill Summary", bills);
+
+}
+
+function extractLabourTable(text){
+
+    let labour=[];
+
+    // We will improve this parser in the next step.
+
+    window.labourTable=labour;
 
 }
