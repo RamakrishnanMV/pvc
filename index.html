@@ -54,11 +54,20 @@ Upload Railway Contract / PVC PDF
 
 <div class="card-body">
 
-<input
-type="file"
-id="pdfFile"
-accept=".pdf"
-class="form-control">
+<div class="mb-3">
+    <label><b>1. Railway PVC PDF</b></label><br>
+    <input type="file" id="railwayPdf" accept=".pdf">
+</div>
+
+<div class="mb-3">
+    <label><b>2. RBI CPI-IW PDF</b></label><br>
+    <input type="file" id="cpiPdf" accept=".pdf">
+</div>
+
+<div class="mb-3">
+    <label><b>3. RBI WPI PDF</b></label><br>
+    <input type="file" id="wpiPdf" accept=".pdf">
+</div>
 
 <div class="d-grid mt-3">
 
@@ -287,6 +296,8 @@ AI Powered Price Variation Clause Management System
 <script src="billExtractor.js"></script>
 
 <script src="pvcCalculator.js"></script>
+
+<script src="officialExtractor.js"></script>
 
 </body>
 
