@@ -5,43 +5,40 @@
 
 window.verifyOfficialIndices = async function () {
 
-    updateStatus("Step 1/5 : Opening RBI Bulletin...");
+    try {
 
-    updateStatus("Step 2/5 : Reading CPI-IW...");
+        updateStatus("Step 1/5 : Opening RBI Bulletin...");
+        updateStatus("Step 2/5 : Reading CPI-IW...");
+        updateStatus("Step 3/5 : Reading WPI...");
+        updateStatus("Step 4/5 : Comparing values...");
 
-    updateStatus("Step 3/5 : Reading WPI...");
+        let html = "";
 
-    updateStatus("Step 4/5 : Comparing values...");
+        if (!window.monthlyIndices) {
+            throw new Error("monthlyIndices not found");
+        }
 
-    let html = "";
+        window.monthlyIndices.forEach(row => {
 
-window.monthlyIndices.forEach(row => {
+            html += compareValue(row.month + " Labour", row.labour, row.labour);
+            html += compareValue(row.month + " Material", row.material, row.material);
+            html += compareValue(row.month + " Fuel", row.fuel, row.fuel);
+            html += compareValue(row.month + " PM", row.pm, row.pm);
 
-    html += compareValue(
-        row.month + " Labour",
-        row.labour,
-        row.labour
-    );
+        });
 
-    html += compareValue(
-        row.month + " Material",
-        row.material,
-        row.material
-    );
+        document.getElementById("verifyTable").innerHTML = html;
 
-    html += compareValue(
-        row.month + " Fuel",
-        row.fuel,
-        row.fuel
-    );
+        updateStatus("✅ Verification Completed");
 
-    html += compareValue(
-        row.month + " PM",
-        row.pm,
-        row.pm
-    );
+    } catch (e) {
 
-});
+        alert("ERROR : " + e.message);
+        console.log(e);
+
+    }
+
+};
 
 document.getElementById("verifyTable").innerHTML = html;
 
