@@ -207,7 +207,7 @@ function extractMonthlyIndices(text) {
 
     let rows = [];
 
-    const regex = /(Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan|Feb|Mar|Apr|May)-(\d{2})\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)/g;
+    const regex = /BILL-(\d+)\s+(\d{2}\/\d{2}\/\d{4})\s+.*?([\d,]+\.\d+)/g;
 
     let match;
 
@@ -263,7 +263,7 @@ function extractBillSummary(text){
 
     const bills = [];
 
-    const regex = /BILL-(\d+)\s+(\d{2}\/\d{2}\/\d{4})\s+₹\s*([\d,]+\.\d+)/g;
+    const regex=/BILL-(\d+)\s+(\d{2}\/\d{2}\/\d{4})\s+.*?([\d,]+\.\d+)/g;
 
     let match;
 
@@ -274,9 +274,11 @@ function extractBillSummary(text){
             date: match[2],
             grossValue: parseFloat(match[3].replace(/,/g,""))
         });
+        
 
     }
-
+console.log("Bill Summary:", bills);
+alert("Bills Found : " + bills.length);
     window.billSummary = bills;
 
     console.log("Bill Summary", bills);
