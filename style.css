@@ -1,0 +1,115 @@
+/* ======================================
+   Railways PVC Analyzer v1.0
+====================================== */
+
+body{
+    background:#f4f6f9;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+    background:#0056b3 !important;
+}
+
+.navbar-brand{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.card{
+    border:none;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.card-header{
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:#0056b3;
+    border:none;
+}
+
+.btn-primary:hover{
+    background:#004494;
+}
+
+#output{
+    min-height:250px;
+    max-height:500px;
+    overflow:auto;
+    background:#ffffff;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:15px;
+    white-space:pre-wrap;
+    font-size:14px;
+}
+
+.list-group-item{
+    font-size:15px;
+}
+
+footer{
+    color:#666;
+    font-size:14px;
+    padding-top:20px;
+}
+
+.status-success{
+    color:green;
+    font-weight:bold;
+}
+
+.status-warning{
+    color:orange;
+    font-weight:bold;
+}
+
+.status-error{
+    color:red;
+    font-weight:bold;
+}
+
+.upload-box{
+    border:2px dashed #0d6efd;
+    border-radius:10px;
+    padding:30px;
+    text-align:center;
+    background:white;
+}
+
+.upload-box:hover{
+    background:#f8f9fa;
+    cursor:pointer;
+}
+
+.table{
+    background:white;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    transition:0.2s;
+}
+
+@media(max-width:768px){
+
+.navbar-brand{
+font-size:18px;
+}
+
+.card-header{
+font-size:16px;
+}
+
+.btn-lg{
+font-size:16px;
+}
+
+#output{
+font-size:13px;
+}
+
+}
