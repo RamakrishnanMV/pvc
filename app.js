@@ -58,7 +58,7 @@ function analysisCompleted() {
 }
 
 async function startVerification() {
-
+    alert("startVerification called");
     const railway = document.getElementById("railwayPdf").files[0];
 
     if (!railway) {
