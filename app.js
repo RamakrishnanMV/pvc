@@ -9,7 +9,7 @@ window.addEventListener("load", function () {
 
     const analyzeBtn = document.getElementById("analyzeBtn");
 
-    analyzeBtn.addEventListener("click", analyzeDocument);
+    analyzeBtn.addEventListener("click", startVerification);
 
 });
 
@@ -57,37 +57,20 @@ function analysisCompleted() {
 
 }
 
-async function startVerification(){
+async function startVerification() {
 
-    const railway =
-        document.getElementById("railwayPdf").files[0];
+    const railway = document.getElementById("railwayPdf").files[0];
 
-    const cpi =
-        document.getElementById("cpiPdf").files[0];
-
-    const wpi =
-        document.getElementById("wpiPdf").files[0];
-
-    if(!railway || !cpi || !wpi){
-
-        alert("Please select all three PDFs.");
-
+    if (!railway) {
+        alert("Please select Railway PVC PDF");
         return;
-
     }
 
-    const railwayText = await readPDF(railway);
+    updateStep(1, "✅ Railway PDF Selected");
+    updateStep(2, "📖 Reading Railway PDF...");
 
-    const cpiText = await readPDF(cpi);
+    readPDF(railway);
 
-    const wpiText = await readPDF(wpi);
-
-    extractRailway(railwayText);
-
-    extractCPI(cpiText);
-
-    extractWPI(wpiText);
-
-    compareOfficialData();
+    alert("Railway PDF analysis started.\n\nOfficial PDF comparison will be enabled in the next step.");
 
 }
