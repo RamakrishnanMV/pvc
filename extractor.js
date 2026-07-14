@@ -58,11 +58,16 @@ data.baseMonth = findValue(
     updateStep(3, "✅ Information Extracted");
 
     showExtractedData(data);
-    window.extractedData = data;
-    
-    const monthlyIndices = extractMonthlyIndices(text);
+
+window.extractedData = data;
+
+const monthlyIndices = extractMonthlyIndices(text);
+
+window.monthlyIndices = monthlyIndices;
 
 console.log(monthlyIndices);
+
+extractBills(text);
 
     // Next module
     if (typeof findOfficialIndices === "function") {
