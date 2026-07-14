@@ -34,14 +34,13 @@ async function readPDF(file) {
 
         }
 
-        updateStep(2, "✅ PDF Read Successfully");
+updateStep(2, "✅ PDF Read Successfully");
 
-        showOutput(fullText);
+// showOutput(fullText);
 
-        analysisCompleted();
+analysisCompleted();
 
-        // Send extracted text to AI engine
-        extractDocument(fullText);
+extractDocument(fullText);
 
     }
 
