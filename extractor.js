@@ -88,7 +88,7 @@ console.log(monthlyIndices);
     if (typeof findOfficialIndices === "function") {
         findOfficialIndices(data);
     }
-    extractBillSummary(text);
+   // extractBillSummary(text);
 
 }
 
@@ -197,11 +197,21 @@ function extractMonthlyIndices(text) {
 
     let rows = [];
 
-    const regex = /\b(Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan|Feb|Mar|Apr|May)-(\d{2})\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\b/g;
+    // Find only the Monthly Indices section
+    const start = text.indexOf("MONTH");
+    const end = text.indexOf("20   10   25   30");
+
+    if (start === -1 || end === -1) {
+        return rows;
+    }
+
+    const section = text.substring(start, end);
+
+    const regex = /(Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan|Feb|Mar|Apr|May)-(\d{2})\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)/g;
 
     let match;
 
-    while ((match = regex.exec(text)) !== null) {
+    while ((match = regex.exec(section)) !== null) {
 
         rows.push({
             month: match[1] + "-" + match[2],
@@ -212,8 +222,6 @@ function extractMonthlyIndices(text) {
         });
 
     }
-
-    console.log(rows);
 
     return rows;
 
