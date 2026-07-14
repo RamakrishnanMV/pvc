@@ -64,10 +64,25 @@ window.extractedData = data;
 const monthlyIndices = extractMonthlyIndices(text);
 
 window.monthlyIndices = monthlyIndices;
+let rows = "";
 
+monthlyIndices.forEach(r => {
+
+    rows += `
+    <tr>
+        <td>${r.month}</td>
+        <td>${r.labour}</td>
+        <td>${r.material}</td>
+        <td>${r.fuel}</td>
+        <td>${r.pm}</td>
+    </tr>`;
+
+});
+
+document.getElementById("monthlyTable").innerHTML = rows;
 console.log(monthlyIndices);
 
-extractBills(text);
+//extractBills(text);
 
     // Next module
     if (typeof findOfficialIndices === "function") {
