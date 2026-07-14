@@ -181,17 +181,7 @@ document.getElementById("output").innerHTML = `
 
 <div class="alert alert-info">
 
-<b>AI Summary</b><br>
 
-✔ Railway PVC Document Detected<br>
-
-✔ Contract Information Identified<br>
-
-✔ Base Month Identified<br>
-
-✔ PVC Components Identified<br>
-
-✔ Ready for WPI Verification
 
 </div>
 
