@@ -88,6 +88,7 @@ console.log(monthlyIndices);
     if (typeof findOfficialIndices === "function") {
         findOfficialIndices(data);
     }
+    extractBillSummary(text);
 
 }
 
@@ -255,5 +256,29 @@ function extractBills(text){
     window.billData=bills;
 
     console.log(bills);
+
+}
+
+function extractBillSummary(text){
+
+    const bills = [];
+
+    const regex = /BILL-(\d+)\s+(\d{2}\/\d{2}\/\d{4})\s+₹\s*([\d,]+\.\d+)/g;
+
+    let match;
+
+    while((match = regex.exec(text)) !== null){
+
+        bills.push({
+            bill: "BILL-" + match[1],
+            date: match[2],
+            grossValue: parseFloat(match[3].replace(/,/g,""))
+        });
+
+    }
+
+    window.billSummary = bills;
+
+    console.log("Bill Summary", bills);
 
 }
