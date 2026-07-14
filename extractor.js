@@ -58,6 +58,7 @@ data.baseMonth = findValue(
     updateStep(3, "✅ Information Extracted");
 
     showExtractedData(data);
+    window.extractedData = data;
     
     const monthlyIndices = extractMonthlyIndices(text);
 

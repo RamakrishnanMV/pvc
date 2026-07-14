@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(btn){
 
-        btn.addEventListener("click", verifyIndices);
+        btn.addEventListener("click", function () {
+    verifyOfficialIndices();
+});
 
     }
 
