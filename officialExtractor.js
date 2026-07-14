@@ -1,41 +1,98 @@
 /* =======================================
    Official CPI & WPI Extractor
 ======================================= */
+/* ==========================================
+   OFFICIAL CPI / WPI EXTRACTOR
+========================================== */
 
-let officialData = {
+window.officialData = {
     labour: {},
     material: {},
     fuel: {},
     pm: {}
 };
 
-function extractCPI(text){
+function extractOfficialPDF(text, type) {
 
-    const regex =
-    /Consumer Price Index for Industrial Workers[\s\S]*?(\d+\.\d+)\s+(\d+\.\d+)/;
+    if (type === "cpi") {
 
-    const m = text.match(regex);
+        extractOfficialCPI(text);
 
-    if(m){
+    } else if (type === "wpi") {
 
-        officialData.labour.base = parseFloat(m[1]);
-
-        officialData.labour.current = parseFloat(m[2]);
+        extractOfficialWPI(text);
 
     }
 
-    console.log(officialData);
+}
+
+function extractOfficialCPI(text){
+
+    const line = text.split("\n").find(l =>
+        l.includes("Consumer Price Index for Industrial Workers")
+    );
+
+    if(!line){
+        alert("CPI-IW row not found");
+        return;
+    }
+
+    console.log(line);
+
+    const values = line.match(/\d+\.\d+/g);
+
+    if(values){
+
+        window.officialData.labour.values = values;
+
+        console.log(values);
+
+    }
 
 }
 
-function extractWPI(text){
+function extractOfficialWPI(text){
 
-    console.log("Reading WPI...");
+    const lines = text.split("\n");
+
+    lines.forEach(line=>{
+
+        if(line.includes("FUEL & POWER")){
+
+            console.log("Fuel Row");
+
+            console.log(line);
+
+        }
+
+        if(line.includes("MANUFACTURE OF MACHINERY")){
+
+            console.log("PM Row");
+
+            console.log(line);
+
+        }
+
+        if(line.includes("All Commodities")){
+
+            console.log("Material Row");
+
+            console.log(line);
+
+        }
+
+    });
 
 }
 
 function compareOfficialData(){
 
-    console.log("Comparing Official Data...");
+    console.log("PDF Labour");
+
+    console.table(window.monthlyIndices);
+
+    console.log("Official Labour");
+
+    console.table(window.officialData.labour);
 
 }
