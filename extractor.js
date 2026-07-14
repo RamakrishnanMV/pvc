@@ -197,7 +197,7 @@ function extractMonthlyIndices(text) {
 
     let rows = [];
 
-    const regex = /BILL-(\d+)\s+(\d{2}\/\d{2}\/\d{4})\s+.*?([\d,]+\.\d+)/g;
+    const regex = /\b(Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan|Feb|Mar|Apr|May)-(\d{2})\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\b/g;
 
     let match;
 
