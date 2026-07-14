@@ -92,8 +92,73 @@ function findNthNumber(text, keyword, position) {
 
 function showExtractedData(data) {
 
-    let html = "";
+let html = `
 
-    html += "========== CONTRACT DETAILS ==========\n\n";
+<div class="card mt-3">
 
-    html +=
+<div class="card-header bg-success text-white">
+
+<h4>✅ Analysis Completed</h4>
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<tr>
+<th width="40%">Tender No</th>
+<td>${data.tenderNo}</td>
+</tr>
+
+<tr>
+<th>LOA No</th>
+<td>${data.loaNo}</td>
+</tr>
+
+<tr>
+<th>Agreement No</th>
+<td>${data.agreementNo}</td>
+</tr>
+
+<tr>
+<th>Contractor</th>
+<td>${data.contractor}</td>
+</tr>
+
+<tr>
+<th>Base Month</th>
+<td>${data.baseMonth}</td>
+</tr>
+
+<tr>
+<th>Labour Index</th>
+<td>${data.labourIndex}</td>
+</tr>
+
+<tr>
+<th>Material Index</th>
+<td>${data.materialIndex}</td>
+</tr>
+
+<tr>
+<th>Fuel Index</th>
+<td>${data.fuelIndex}</td>
+</tr>
+
+<tr>
+<th>Plant & Machinery</th>
+<td>${data.pmIndex}</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+document.getElementById("output").innerHTML = html;
+
+}
