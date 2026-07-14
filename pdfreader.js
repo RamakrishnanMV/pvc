@@ -40,7 +40,12 @@ updateStep(2, "✅ PDF Read Successfully");
 
 analysisCompleted();
 
-extractDocument(fullText);
+try {
+    extractDocument(fullText);
+} catch (e) {
+    console.error("Extractor Error:", e);
+    alert(e.message);
+}
 
     }
 
