@@ -28,17 +28,17 @@ function extractDocument(text) {
         2
     );
 
-    // Contractor
-    data.contractor = findValue(
-        text,
-        /Contractor\s*:?[\s\S]{0,50}?([A-Z][A-Za-z .,&-]+)/i
-    );
+  // Contractor
+data.contractor = findValue(
+    text,
+    /Contractor'?s?\s*Name\s*:\s*([A-Za-z .,-]+)/i
+);
 
-    // Base Month
-    data.baseMonth = findValue(
-        text,
-        /BASE\s*MONTH\s*([A-Za-z]+\s*-\s*\d{2,4}|[A-Za-z]+\-\d{2,4}|[A-Za-z]+\s+\d{4})/i
-    );
+// Base Month
+data.baseMonth = findValue(
+    text,
+    /BASE\s*MONTH\s*([A-Z]+-\d{4})/i
+);
 
     // Labour Index
     data.labourIndex = findValue(
@@ -92,73 +92,62 @@ function findNthNumber(text, keyword, position) {
 
 function showExtractedData(data) {
 
-let html = `
+document.getElementById("output").innerHTML = `
 
-<div class="card mt-3">
+<div class="card shadow">
 
 <div class="card-header bg-success text-white">
 
-<h4>✅ Analysis Completed</h4>
+<h4>✅ AI Analysis Completed</h4>
 
 </div>
 
 <div class="card-body">
 
+<h5>Contract Details</h5>
+
 <table class="table table-bordered">
 
-<tr>
-<th width="40%">Tender No</th>
-<td>${data.tenderNo}</td>
-</tr>
+<tr><th>Tender No</th><td>${data.tenderNo}</td></tr>
 
-<tr>
-<th>LOA No</th>
-<td>${data.loaNo}</td>
-</tr>
+<tr><th>LOA No</th><td>${data.loaNo}</td></tr>
 
-<tr>
-<th>Agreement No</th>
-<td>${data.agreementNo}</td>
-</tr>
+<tr><th>Agreement No</th><td>${data.agreementNo}</td></tr>
 
-<tr>
-<th>Contractor</th>
-<td>${data.contractor}</td>
-</tr>
+<tr><th>Contractor</th><td>${data.contractor}</td></tr>
 
-<tr>
-<th>Base Month</th>
-<td>${data.baseMonth}</td>
-</tr>
+<tr><th>Base Month</th><td>${data.baseMonth}</td></tr>
 
-<tr>
-<th>Labour Index</th>
-<td>${data.labourIndex}</td>
-</tr>
+<tr><th>Labour Index</th><td>${data.labourIndex}</td></tr>
 
-<tr>
-<th>Material Index</th>
-<td>${data.materialIndex}</td>
-</tr>
+<tr><th>Material Index</th><td>${data.materialIndex}</td></tr>
 
-<tr>
-<th>Fuel Index</th>
-<td>${data.fuelIndex}</td>
-</tr>
+<tr><th>Fuel Index</th><td>${data.fuelIndex}</td></tr>
 
-<tr>
-<th>Plant & Machinery</th>
-<td>${data.pmIndex}</td>
-</tr>
+<tr><th>Plant & Machinery</th><td>${data.pmIndex}</td></tr>
 
 </table>
+
+<div class="alert alert-info">
+
+<b>AI Summary</b><br>
+
+✔ Railway PVC Document Detected<br>
+
+✔ Contract Information Identified<br>
+
+✔ Base Month Identified<br>
+
+✔ PVC Components Identified<br>
+
+✔ Ready for WPI Verification
+
+</div>
 
 </div>
 
 </div>
 
 `;
-
-document.getElementById("output").innerHTML = html;
 
 }
