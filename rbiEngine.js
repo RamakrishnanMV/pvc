@@ -3,7 +3,7 @@
    RBI Engine
 ===================================== */
 
-async function verifyOfficialIndices() {
+window.verifyOfficialIndices = async function () {
 
     updateStatus("Step 1/5 : Opening RBI Bulletin...");
 
@@ -21,7 +21,8 @@ async function verifyOfficialIndices() {
 
     updateStatus("✅ Verification Completed");
 
-}
+};
+
 
 function updateStatus(message){
 

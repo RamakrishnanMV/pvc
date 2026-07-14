@@ -4,19 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (btn) {
         btn.addEventListener("click", function () {
-            verifyOfficialIndices();
+            window.verifyOfficialIndices();
         });
     }
 
 });
-
-function verifyOfficialIndices() {
-
-    document.getElementById("verifyResult").innerHTML = `
-    <div class="alert alert-primary">
-        🔄 Connecting to RBI...
-        <br>📄 Opening RBI Bulletin...
-        <br>🔍 Searching "Other Consumer Indices"...
-        <br>⏳ Live verification module under development...
-    </div>`;
-}
