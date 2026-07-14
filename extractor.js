@@ -11,9 +11,9 @@ function extractDocument(text) {
 
     // Tender Number
     data.tenderNo = findValue(
-        text,
-        /Tender\s*No\.?\s*[:\-]?\s*([A-Za-z0-9\/\-.]+)/i
-    );
+    text,
+    /Tender\s*No\.?\s*[:\-]?\s*([A-Za-z0-9\-\/]+)/i
+);
 
     // LOA Number
     data.loaNo = findValue(
