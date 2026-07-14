@@ -58,6 +58,10 @@ data.baseMonth = findValue(
     updateStep(3, "✅ Information Extracted");
 
     showExtractedData(data);
+    
+    const monthlyIndices = extractMonthlyIndices(text);
+
+console.log(monthlyIndices);
 
     // Next module
     if (typeof findOfficialIndices === "function") {
@@ -127,6 +131,31 @@ document.getElementById("output").innerHTML = `
 <tr><th>Plant & Machinery</th><td>${data.pmIndex}</td></tr>
 
 </table>
+<h5 class="mt-4">Monthly Indices</h5>
+
+<table class="table table-striped">
+
+<thead>
+
+<tr>
+
+<th>Month</th>
+
+<th>Labour</th>
+
+<th>Material</th>
+
+<th>Fuel</th>
+
+<th>PM</th>
+
+</tr>
+
+</thead>
+
+<tbody id="monthlyTable"></tbody>
+
+</table>
 
 <div class="alert alert-info">
 
@@ -149,5 +178,31 @@ document.getElementById("output").innerHTML = `
 </div>
 
 `;
+
+}
+
+function extractMonthlyIndices(text) {
+
+    let rows = [];
+
+    const regex = /(Jun|Jul|Aug|Sep|Oct|Nov|Dec|Jan|Feb|Mar|Apr|May)-(\d{2})\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)\s+(\d+\.\d+)/g;
+
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+
+        rows.push({
+            month: match[1] + "-" + match[2],
+            labour: parseFloat(match[3]),
+            material: parseFloat(match[4]),
+            fuel: parseFloat(match[5]),
+            pm: parseFloat(match[6])
+        });
+
+    }
+
+    console.log(rows);
+
+    return rows;
 
 }
