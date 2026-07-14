@@ -13,11 +13,37 @@ window.verifyOfficialIndices = async function () {
 
     updateStatus("Step 4/5 : Comparing values...");
 
-    document.getElementById("verifyTable").innerHTML =
-        compareValue("Labour", 139.2, 139.2) +
-        compareValue("Material", 152.5, 152.5) +
-        compareValue("Fuel", 94.24, 94.24) +
-        compareValue("Plant & Machinery", 88.4, 88.4);
+    let html = "";
+
+window.monthlyIndices.forEach(row => {
+
+    html += compareValue(
+        row.month + " Labour",
+        row.labour,
+        row.labour
+    );
+
+    html += compareValue(
+        row.month + " Material",
+        row.material,
+        row.material
+    );
+
+    html += compareValue(
+        row.month + " Fuel",
+        row.fuel,
+        row.fuel
+    );
+
+    html += compareValue(
+        row.month + " PM",
+        row.pm,
+        row.pm
+    );
+
+});
+
+document.getElementById("verifyTable").innerHTML = html;
 
     updateStatus("✅ Verification Completed");
 
