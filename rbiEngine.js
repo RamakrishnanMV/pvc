@@ -39,12 +39,6 @@ window.verifyOfficialIndices = async function () {
 
 };
 
-document.getElementById("verifyTable").innerHTML = html;
-
-    updateStatus("✅ Verification Completed");
-
-};
-
 
 function updateStatus(message){
 
