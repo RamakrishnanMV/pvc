@@ -50,7 +50,8 @@ function extractOfficialCPI(text) {
     });
 
     console.log("Official CPI Extracted");
-    console.table(window.officialIndices);
+    //console.table(window.officialIndices);
+    alert(JSON.stringify(window.officialIndices));
 
 }
 
