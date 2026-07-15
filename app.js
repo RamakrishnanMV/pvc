@@ -15,65 +15,15 @@ window.addEventListener("load", function () {
 
 async function startVerification() {
 
-    try {
+    alert("START");
 
-        const railway = document.getElementById("railwayPdf").files[0];
-        const cpi = document.getElementById("cpiPdf").files[0];
-        const wpi = document.getElementById("wpiPdf").files[0];
+    const railway = document.getElementById("railwayPdf").files[0];
+    const cpi = document.getElementById("cpiPdf").files[0];
+    const wpi = document.getElementById("wpiPdf").files[0];
 
-        if (!railway) {
-            alert("Please select Railway PVC PDF.");
-            return;
-        }
-
-        // Progress
-        updateStep(1, "✅ Railway PDF Selected");
-        updateStep(2, "📖 Reading Railway PDF...");
-
-        // Analyse Railway PDF
-        await readPDF(railway);
-
-        updateStep(2, "✅ Railway PDF Read");
-        updateStep(3, "✅ Information Extracted");
-        updateStep(4, "✅ Monthly Indices Extracted");
-
-        // CPI PDF
-     if (cpi) {
-
-    alert("Reading CPI PDF");
-
-    const cpiText = await readOfficialPDF(cpi);
-
-    alert("CPI PDF Read");
-
-    extractOfficialPDF(cpiText, "cpi");
-
-}
-
-        // WPI PDF
-        if (wpi) {
-
-    alert("Reading WPI PDF");
-
-    const wpiText = await readOfficialPDF(wpi);
-
-    alert("WPI PDF Read");
-
-    extractOfficialPDF(wpiText, "wpi");
-
-}
-
-        updateStep(5, "✅ Ready for Official Verification");
-
-        console.log("Verification module ready.");
-
-    }
-    catch (err) {
-
-        console.error(err);
-        alert("Error : " + err.message);
-
-    }
+    alert("Railway = " + (railway ? "YES" : "NO"));
+    alert("CPI = " + (cpi ? "YES" : "NO"));
+    alert("WPI = " + (wpi ? "YES" : "NO"));
 
 }
 function updateStep(step, message) {
