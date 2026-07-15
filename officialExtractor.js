@@ -1,7 +1,7 @@
 /* =========================================
    Official PDF Extractor
 ========================================= */
-
+alert("officialExtractor Loaded");
 function extractOfficialPDF(text, type) {
 
     if (type === "cpi") {
