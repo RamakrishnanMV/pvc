@@ -60,3 +60,30 @@ try {
     }
 
 }
+
+async function readOfficialPDF(file) {
+
+    const arrayBuffer = await file.arrayBuffer();
+
+    const pdf = await pdfjsLib.getDocument({
+        data: arrayBuffer
+    }).promise;
+
+    let fullText = "";
+
+    for (let page = 1; page <= pdf.numPages; page++) {
+
+        const p = await pdf.getPage(page);
+
+        const content = await p.getTextContent();
+
+        fullText += content.items
+            .map(i => i.str)
+            .join(" ");
+
+        fullText += "\n";
+    }
+
+    return fullText;
+
+}
