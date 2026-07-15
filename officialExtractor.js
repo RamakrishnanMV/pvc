@@ -59,6 +59,6 @@ function extractOfficialCPI(text) {
 function extractOfficialWPI(text) {
 
     console.log("Reading Official WPI...");
-    console.log(text.substring(0,1000));
+    //console.log(text.substring(0,1000));
 
 }
