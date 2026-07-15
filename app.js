@@ -38,23 +38,30 @@ async function startVerification() {
         updateStep(4, "✅ Monthly Indices Extracted");
 
         // CPI PDF
-        if (cpi) {
-            updateStep(5, "📄 Reading CPI-IW PDF...");
-            console.log("CPI PDF Selected :", cpi.name);
+     if (cpi) {
 
-const cpiText = await readOfficialPDF(cpi);
+    alert("Reading CPI PDF");
 
-extractOfficialPDF(cpiText, "cpi");
-        }
+    const cpiText = await readOfficialPDF(cpi);
+
+    alert("CPI PDF Read");
+
+    extractOfficialPDF(cpiText, "cpi");
+
+}
 
         // WPI PDF
         if (wpi) {
-            console.log("WPI PDF Selected :", wpi.name);
 
-const wpiText = await readOfficialPDF(wpi);
+    alert("Reading WPI PDF");
 
-extractOfficialPDF(wpiText, "wpi");
-        }
+    const wpiText = await readOfficialPDF(wpi);
+
+    alert("WPI PDF Read");
+
+    extractOfficialPDF(wpiText, "wpi");
+
+}
 
         updateStep(5, "✅ Ready for Official Verification");
 
