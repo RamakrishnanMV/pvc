@@ -1,4 +1,5 @@
 /* =====================================
+/* =====================================
    Railways PVC Analyzer
    app.js
 ===================================== */
@@ -7,59 +8,16 @@ window.addEventListener("load", function () {
 
     console.log("Railways PVC Analyzer Started");
 
-    const analyzeBtn = document.getElementById("analyzeBtn");
-    
-    analyzeBtn.addEventListener("click", startVerification);
+    document.getElementById("analyzeBtn")
+        .addEventListener("click", startVerification);
 
 });
 
-function analyzeDocument() {
-
-    const fileInput = document.getElementById("pdfFile");
-
-    if (fileInput.files.length === 0) {
-
-        alert("Please select a PDF file.");
-
-        return;
-
-    }
-
-    updateStep(1, "✅ PDF Selected");
-
-    updateStep(2, "📖 Reading PDF...");
-
-    readPDF(fileInput.files[0]);
-
-}
-
-function updateStep(step, message) {
-
-    document.getElementById("step" + step).innerHTML = message;
-
-}
-
-function showOutput(text) {
-
-    document.getElementById("output").textContent = text;
-
-}
-
-function analysisCompleted() {
-
-    updateStep(2, "✅ PDF Read Successfully");
-
-    updateStep(3, "✅ Data Extracted");
-
-    updateStep(4, "⏳ Index Detection (Next Module)");
-
-    updateStep(5, "⏳ PVC Calculation (Next Module)");
-
-}
-
 async function startVerification() {
-    alert("startVerification called");
+
     const railway = document.getElementById("railwayPdf").files[0];
+    const cpi = document.getElementById("cpiPdf").files[0];
+    const wpi = document.getElementById("wpiPdf").files[0];
 
     if (!railway) {
         alert("Please select Railway PVC PDF");
@@ -67,10 +25,33 @@ async function startVerification() {
     }
 
     updateStep(1, "✅ Railway PDF Selected");
-    updateStep(2, "📖 Reading Railway PDF...");
 
-    readPDF(railway);
+    // Demo version: analyse only the Railway PDF
+    await readPDF(railway);
 
-    alert("Railway PDF analysis started.\n\nOfficial PDF comparison will be enabled in the next step.");
+    if (cpi) {
+        alert("CPI PDF uploaded successfully.");
+    }
+
+    if (wpi) {
+        alert("WPI PDF uploaded successfully.");
+    }
+
+}
+
+function updateStep(step, message) {
+    document.getElementById("step" + step).innerHTML = message;
+}
+
+function showOutput(text) {
+    document.getElementById("output").textContent = text;
+}
+
+function analysisCompleted() {
+
+    updateStep(2, "✅ PDF Read Successfully");
+    updateStep(3, "✅ Data Extracted");
+    updateStep(4, "✅ Monthly Indices Extracted");
+    updateStep(5, "Ready for Official Verification");
 
 }
