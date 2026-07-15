@@ -15,15 +15,53 @@ window.addEventListener("load", function () {
 
 async function startVerification() {
 
-    alert("START");
+    try {
 
-    const railway = document.getElementById("railwayPdf").files[0];
-    const cpi = document.getElementById("cpiPdf").files[0];
-    const wpi = document.getElementById("wpiPdf").files[0];
+        const railway = document.getElementById("railwayPdf").files[0];
+        const cpi = document.getElementById("cpiPdf").files[0];
+        const wpi = document.getElementById("wpiPdf").files[0];
 
-    alert("Railway = " + (railway ? "YES" : "NO"));
-    alert("CPI = " + (cpi ? "YES" : "NO"));
-    alert("WPI = " + (wpi ? "YES" : "NO"));
+        if (!railway) {
+            alert("Please select Railway PVC PDF");
+            return;
+        }
+
+        updateStep(1, "✅ Railway PDF Selected");
+
+        // Railway PDF
+        await readPDF(railway);
+
+        // CPI PDF
+        if (cpi) {
+
+            updateStep(5, "📖 Reading CPI PDF...");
+
+            const cpiText = await readOfficialPDF(cpi);
+
+            extractOfficialPDF(cpiText, "cpi");
+
+        }
+
+        // WPI PDF
+        if (wpi) {
+
+            updateStep(5, "📖 Reading WPI PDF...");
+
+            const wpiText = await readOfficialPDF(wpi);
+
+            extractOfficialPDF(wpiText, "wpi");
+
+        }
+
+        updateStep(5, "✅ Official Verification Ready");
+
+    }
+    catch (err) {
+
+        console.error(err);
+        alert(err.message);
+
+    }
 
 }
 function updateStep(step, message) {
