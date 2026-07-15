@@ -1,16 +1,6 @@
-/* =======================================
-   Official CPI & WPI Extractor
-======================================= */
-/* ==========================================
-   OFFICIAL CPI / WPI EXTRACTOR
-========================================== */
-
-window.officialData = {
-    labour: {},
-    material: {},
-    fuel: {},
-    pm: {}
-};
+/* =========================================
+   Official PDF Extractor
+========================================= */
 
 function extractOfficialPDF(text, type) {
 
@@ -18,7 +8,8 @@ function extractOfficialPDF(text, type) {
 
         extractOfficialCPI(text);
 
-    } else if (type === "wpi") {
+    }
+    else if (type === "wpi") {
 
         extractOfficialWPI(text);
 
@@ -26,73 +17,16 @@ function extractOfficialPDF(text, type) {
 
 }
 
-function extractOfficialCPI(text){
+function extractOfficialCPI(text) {
 
-    const line = text.split("\n").find(l =>
-        l.includes("Consumer Price Index for Industrial Workers")
-    );
-
-    if(!line){
-        alert("CPI-IW row not found");
-        return;
-    }
-
-    console.log(line);
-
-    const values = line.match(/\d+\.\d+/g);
-
-    if(values){
-
-        window.officialData.labour.values = values;
-
-        console.log(values);
-
-    }
+    console.log("Reading Official CPI...");
+    console.log(text.substring(0,1000));
 
 }
 
-function extractOfficialWPI(text){
+function extractOfficialWPI(text) {
 
-    const lines = text.split("\n");
-
-    lines.forEach(line=>{
-
-        if(line.includes("FUEL & POWER")){
-
-            console.log("Fuel Row");
-
-            console.log(line);
-
-        }
-
-        if(line.includes("MANUFACTURE OF MACHINERY")){
-
-            console.log("PM Row");
-
-            console.log(line);
-
-        }
-
-        if(line.includes("All Commodities")){
-
-            console.log("Material Row");
-
-            console.log(line);
-
-        }
-
-    });
-
-}
-
-function compareOfficialData(){
-
-    console.log("PDF Labour");
-
-    console.table(window.monthlyIndices);
-
-    console.log("Official Labour");
-
-    console.table(window.officialData.labour);
+    console.log("Reading Official WPI...");
+    console.log(text.substring(0,1000));
 
 }
