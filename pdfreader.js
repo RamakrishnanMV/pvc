@@ -2,7 +2,7 @@
    Railways PVC Analyzer
    pdfreader.js
 ===================================== */
-
+console.log("pdfjsLib =", typeof pdfjsLib);
 async function readPDF(file) {
 
     try {
